@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brahmix Game Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Poppins',sans-serif;background:#0f172a;color:#fff}
+    header{background:linear-gradient(135deg,#ff9f1c,#ff5e00);padding:16px;text-align:center;font-size:22px;font-weight:600}
+    .container{max-width:420px;margin:auto;padding:15px}
+    .filters{display:flex;gap:8px;margin-bottom:12px}
+    .filters button{flex:1;background:#1e293b;border:none;color:#fff;padding:8px;border-radius:8px}
+    .game{background:#1e293b;border-radius:14px;padding:12px;margin-bottom:12px;display:flex;gap:12px;cursor:pointer;position:relative}
+    .tag{position:absolute;top:8px;left:8px;background:#22c55e;font-size:10px;padding:2px 6px;border-radius:6px}
+    .game img{width:80px;height:80px;border-radius:10px;object-fit:cover}
+    .price{color:#22c55e;font-weight:600}
+    .old{color:#94a3b8;text-decoration:line-through;font-size:12px}
+    footer{text-align:center;font-size:12px;opacity:.6;margin:20px 0}
+  </style>
+</head>
+<body>
+<header>🎮 Brahmix Game Store</header>
+<div class="container">
+
+<h3>🔥 Featured Games</h3>
+<div class="filters">
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('pc')">PC</button>
+  <button onclick="filter('ps')">PS5</button>
+  <button onclick="filter('xbox')">Xbox</button>
+</div>
+
+<div class="game pc" onclick="openModal('GTA V','https://via.placeholder.com/400','Open world action game')">
+  <span class="tag">Best Seller</span>
+  <img src="https://via.placeholder.com/150" />
+  <div>
+    <h4>GTA V (PC)</h4>
+    <div class="old">₹1299</div>
+    <div class="price">₹799</div>
+  </div>
+</div>
+
+<div class="game ps" onclick="openModal('Cricket 26','https://via.placeholder.com/400','Next-gen cricket game')">
+  <span class="tag">New</span>
+  <img src="https://via.placeholder.com/150" />
+  <div>
+    <h4>Cricket 26 (PS5)</h4>
+    <div class="old">₹1499</div>
+    <div class="price">₹999</div>
+  </div>
+</div>
+
+<footer>© 2026 Brahmix Game Store</footer>
+</div>
+
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:99">
+  <div style="background:#1e293b;padding:16px;border-radius:14px;max-width:360px;width:90%">
+    <div id="slider" style="display:flex;overflow-x:auto;gap:8px">
+      <img class="simg" src="https://via.placeholder.com/400" style="width:100%;border-radius:10px" />
+      <img class="simg" src="https://via.placeholder.com/401" style="width:100%;border-radius:10px" />
+      <img class="simg" src="https://via.placeholder.com/402" style="width:100%;border-radius:10px" />
+    </div>
+    <h3 id="mTitle"></h3>
+    <p id="mDesc" style="font-size:14px;opacity:.8"></p>
+    <button onclick="window.open('https://wa.me/919100000000','_blank')">Order on WhatsApp</button>
+    <button onclick="closeModal()" style="margin-left:8px">Close</button>
+  </div>
+</div>
+
+<script>
+function openModal(t,i,d){modal.style.display='flex';mTitle.innerText=t;mImg.src=i;mDesc.innerText=d}
+function closeModal(){modal.style.display='none'}
+function filter(c){document.querySelectorAll('.game').forEach(g=>{g.style.display=(c==='all'||g.classList.contains(c))?'flex':'none'})}
+</script>
+</body>
+</html>
